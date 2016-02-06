@@ -1131,7 +1131,7 @@
 	}
 
 	a {
-		color: #d52349;
+		color: #ace600;
 		text-decoration: underline;
 	}
 
@@ -1304,7 +1304,7 @@
 		cursor: pointer;
 		border: 0;
 		border-radius: 5px;
-		background: #d52349;
+		background: #ace600;
 		color: #fff !important;
 		font-weight: 700;
 		outline: 0;
@@ -1446,7 +1446,7 @@
 		position: absolute;
 		left: 0;
 		top: 1.3em;
-		background-color: #d52349;
+		background-color: #ace600;
 		height: 3.5em;
 		text-align: center;
 		color: #fff;
@@ -1461,7 +1461,7 @@
 			position: absolute;
 			bottom: 0;
 			right: -1.2em;
-			border-left: solid 1.25em #d52349;
+			border-left: solid 1.25em #ace600;
 			border-top: solid 1.8em transparent;
 			border-bottom: solid 1.8em transparent;
 		}
@@ -1611,7 +1611,7 @@
 		.icon.featured {
 			position: relative;
 			display: inline-block;
-			background-color: #d52349;
+			background-color: #ace600;
 			width: 9em;
 			padding: 1.75em 0 0.75em 0;
 			border-top-left-radius: 5px;
@@ -1631,7 +1631,7 @@
 				position: absolute;
 				bottom: -1.95em;
 				left: 0;
-				border-top: solid 2em #d52349;
+				border-top: solid 2em #ace600;
 				border-left: solid 4.5em transparent;
 				border-right: solid 4.5em transparent;
 			}
@@ -1663,8 +1663,11 @@
 	}
 
 		#banner header {
-			background-color: #252122;
-			background-color: rgba(34, 30, 31, 0.98);
+			/*background-color: #252122;*/
+			/*background-color: rgba(34, 30, 31, 0.98);*/
+			/*background-color: #FFAABB;*/
+			/*opacity: 0.5;*/
+			background-color: rgba(15, 20, 15, 0.5);
 		}
 
 			#banner header h2 {
@@ -1673,7 +1676,8 @@
 			}
 
 			#banner header p {
-				color: #d52349;
+				/*color: #ace600;*/
+				color: #fff;
 				padding: 0;
 				font-style: normal;
 				margin: 0;
@@ -1689,7 +1693,8 @@
 
 	#main-wrapper {
 		position: relative;
-		background: #f7f7f7 url("images/bg02.png");
+		/*background: #f7f7f7 url("images/bg02.png");*/
+		background: #ffffff;
 	}
 
 		#main-wrapper:before {
@@ -1907,10 +1912,12 @@
 				text-align: center;
 			}
 
+				/* Versono title on index page */
 				#header h1 {
-					color: #252122;
+					/*color: #252122;*/
+					color:#778899;
 					font-weight: 900;
-					font-size: 2.5em;
+					font-size: 4.5em;
 					letter-spacing: -0.035em;
 					margin: 0 0 1em 0;
 				}
@@ -1933,7 +1940,9 @@
 
 					#nav > ul > li > a {
 						border-radius: 5px;
-						color: #5d5d5d;
+						/*color: #5d5d5d;*/
+											color:#778899;
+
 						text-decoration: none;
 						padding: 0.6em 1.2em 0.6em 1.2em;
 						-moz-transition: background-color .25s ease-in-out;
@@ -1948,7 +1957,7 @@
 					}
 
 					#nav > ul > li.current > a {
-						background: #d52349;
+						background: #ace600;
 						color: #fff !important;
 						font-weight: 700;
 					}

@@ -34,3 +34,6 @@ Credits:
 		Respond.js (j.mp/respondjs)
 		jquery.dropotron (n33.co)
 		Skel (skel.io)
+
+
+End line by Koch

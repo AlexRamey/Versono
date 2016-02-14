@@ -1,5 +1,7 @@
 @import url("font-awesome.min.css");
-@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
+/*@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");*/
+@import url("http://fonts.googleapis.com/css?family=Ubuntu:300,400,700,900,300italic");
+@import url("http://fonts.googleapis.com/css?family=Montserrat");
 
 /*
 	Dopetrope by HTML5 UP
@@ -1071,7 +1073,7 @@
 	body {
 		background: #252122;
 		background-image: url("images/bg02.png");
-		font-family: 'Source Sans Pro';
+		font-family: 'Ubuntu';
 		font-weight: 300;
 		color: #5d5d5d;
 	}
@@ -1088,7 +1090,7 @@
 		}
 
 	input, textarea, select {
-		font-family: 'Source Sans Pro';
+		font-family: 'Ubuntu';
 		font-weight: 300;
 		color: #5d5d5d;
 	}
@@ -1120,7 +1122,13 @@
 		font-style: italic;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1, h3, h4, h5, h6 {
+		color: #252122;
+		font-weight: 700;
+	}
+
+	h2 {
+		font-family: 'Montserrat';
 		color: #252122;
 		font-weight: 700;
 	}
@@ -1131,7 +1139,7 @@
 	}
 
 	a {
-		color: #ace600;
+		color: #33cc33;
 		text-decoration: underline;
 	}
 
@@ -1304,7 +1312,7 @@
 		cursor: pointer;
 		border: 0;
 		border-radius: 5px;
-		background: #ace600;
+		background: #33cc33;
 		color: #fff !important;
 		font-weight: 700;
 		outline: 0;
@@ -1446,7 +1454,7 @@
 		position: absolute;
 		left: 0;
 		top: 1.3em;
-		background-color: #ace600;
+		background-color: #33cc33;
 		height: 3.5em;
 		text-align: center;
 		color: #fff;
@@ -1461,7 +1469,7 @@
 			position: absolute;
 			bottom: 0;
 			right: -1.2em;
-			border-left: solid 1.25em #ace600;
+			border-left: solid 1.25em #33cc33;
 			border-top: solid 1.8em transparent;
 			border-bottom: solid 1.8em transparent;
 		}
@@ -1611,7 +1619,7 @@
 		.icon.featured {
 			position: relative;
 			display: inline-block;
-			background-color: #ace600;
+			background-color: #33cc33;
 			width: 9em;
 			padding: 1.75em 0 0.75em 0;
 			border-top-left-radius: 5px;
@@ -1631,7 +1639,7 @@
 				position: absolute;
 				bottom: -1.95em;
 				left: 0;
-				border-top: solid 2em #ace600;
+				border-top: solid 2em #33cc33;
 				border-left: solid 4.5em transparent;
 				border-right: solid 4.5em transparent;
 			}
@@ -1676,7 +1684,7 @@
 			}
 
 			#banner header p {
-				/*color: #ace600;*/
+				/*color: #33cc33;*/
 				color: #fff;
 				padding: 0;
 				font-style: normal;
@@ -1753,10 +1761,17 @@
 		text-align: center;
 	}
 
+/* For bullet point list */
+	#bullets {
+		font-size: 1.2em;
+		font-style: bold;
+		text-align: left;
+	}
+
 /* Copyright */
 
 	#copyright {
-		text-align: center;
+		text-align: left;
 	}
 
 		#copyright .links {
@@ -1957,7 +1972,7 @@
 					}
 
 					#nav > ul > li.current > a {
-						background: #ace600;
+						background: #33cc33;
 						color: #fff !important;
 						font-weight: 700;
 					}

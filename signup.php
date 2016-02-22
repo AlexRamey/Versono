@@ -17,7 +17,7 @@
 
 	<?php
 			// define variables and set to empty values
-			$signUpSuccessMessage = "";
+			$signUpMessage = "";
 			$email = $first_name = $last_name = $pswd = $conf_pswd = "";
 			$emailErr = $firstNameErr = $lastNameErr = $pswdErr = "";
 			$addr = $city = $state = $zip = "";
@@ -72,14 +72,25 @@
 				}
 				if ($existsAnError == False){
 					# Post Data to DB
-					if (post_data($values) === TRUE){
-						$signUpSuccessMessage = "Sign up Successful!";
+					$postRetVal = post_data($values);
+					if ($postRetVal[0] === TRUE){
+						$signUpMessage = "Sign up Successful!";
 						$arrlength = count($values);
 						for($x = 0; $x < $arrlength; $x++){
 							$values[$x] = "";
 						}
 						$conf_pswd = "";
 					}
+					else
+					{
+						if ($postRetVal[1] === 1062){
+							$emailErr = "This email is already taken!";
+						}
+						$signUpMessage = $postRetVal[2];
+					}
+				}
+				else{
+					$signUpMessage = "Input error! Please try again.";
 				}
 			}
 
@@ -105,6 +116,8 @@
 				    die("Connection failed: " . $conn->connect_error);
 				} 
 				
+				$errorNum = 0;
+				$errorMsg = "";
 				$sql = $conn->prepare("INSERT INTO versono_user(email, first_name, last_name, user_password, address, city, state, zip_code) VALUES (?,?,?,?,?,?,?,?)");
 				if ($sql == False){
 					$isSuccess = False;
@@ -116,13 +129,17 @@
 					    # success
 					} else {
 					    $isSuccess = False;
+					    if ($sql->errno === 1062){
+					    	$errorNum = 1062;
+					    	$errorMsg ="Signup failed :(";
+					    }
 					}
 
 					$sql->close();
 				}
 
 				$conn->close();
-				return $isSuccess;
+				return array($isSuccess, $errorNum, $errorMsg);
 			}
 	?>
 
@@ -135,7 +152,19 @@
 
 						<!-- Logo -->
 							<h1>Sign Up</h1>
-							<h2><?php echo $signUpSuccessMessage;?></h2>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="about.html">About Us</a></li>
+									<li class="current"><a href="signup.php">Sign Up</a></li>
+								</ul>
+							</nav>
+						<!-- Special Message Space -->
+						<br>
+						<br>
+						<h4><?php echo $signUpMessage;?></h4>
 					</div>
 				</div>
 
@@ -168,7 +197,8 @@
 							<div class="form_text_input">
 								Confirm Password:<br>
 								<input type="password" name="pswd_conf" onkeyup="verifyMatchingPasswords()" id="pswd_input_2" maxlength="50" value=<?php echo $conf_pswd;?>>
-								<label class="notify_label" text="" id="pswd_feedback">
+								<label class="notify_label" text="" id="pswd_neg_feedback"></label>
+								<label class="green_label" text="" id="pswd_pos_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="form_text_input">
@@ -241,7 +271,7 @@
 							</div>
 							<div class="form_text_input">
 								Zip:<br>
-								<input type="text" name="zip_code" maxlength="15">
+								<input type="text" name="zip_code" maxlength="15" value=<?php echo $zip;?>>
 								<label class="notify_label"><?php echo $zipErr;?></label>
 							</div>
 							<div class="clear">&nbsp;</div>

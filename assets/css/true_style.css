@@ -20,3 +20,9 @@
 .green_label{
 	color:green;
 }
+
+.form_login_text_input{
+	max-width: 500px;
+	width:90%;
+	margin: auto;
+}

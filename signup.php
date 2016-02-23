@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/signup.css" />
+		<link rel="stylesheet" href="assets/css/true_style.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 
@@ -107,9 +107,10 @@
 				$servername = "localhost";
 				$username = "root";
 				$password = "";
+				$db_name = "versono_db";
 				$isSuccess = True;
 				// Create connection
-				$conn = new mysqli($servername, $username, $password, "versono_db");
+				$conn = new mysqli($servername, $username, $password, $db_name);
 
 				// Check connection
 				if ($conn->connect_error) {
@@ -123,7 +124,7 @@
 					$isSuccess = False;
 				}
 				else{
-					$sql->bind_param('ssssssss', $values[0], $values[1], $values[2], hash("sha256", $values[3]), $values[4], $values[5], $values[6], $values[7]);
+					$sql->bind_param('ssssssss', $values[0], $values[1], $values[2], hash("sha256", $values[3], False), $values[4], $values[5], $values[6], $values[7]);
 
 					if ($sql->execute() === True) {
 					    # success

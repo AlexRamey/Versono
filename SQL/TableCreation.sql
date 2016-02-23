@@ -7,6 +7,6 @@ create table versono_user
     city			varchar(50),
     state			varchar(50),
     zip_code		varchar(15),
-    user_password   binary(32),
+    user_password   char(64),
     primary key(email)
 );

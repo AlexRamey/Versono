@@ -1,12 +1,24 @@
 <?php
+session_start();
 $loginMessage = "";
+
+if (isset($_SESSION["login_guard"])):
+	$loginMessage = $_SESSION["login_guard"];
+	unset($_SESSION["login_guard"]);
+endif;
+
+if (isset($_POST["logout"])):
+	session_unset();
+endif;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	# Verify input data is not empty
 	if (empty($_POST["email"]) OR empty($_POST["pswd"])){
 		$loginMessage = "Please enter your username and password to login!";
 	} else{
 		if (authenticate($_POST["email"], $_POST["pswd"]) === TRUE){
-			$loginMessage = "Well done. :)";
+			//$loginMessage = "Well done. :)";
+			header("Location: dashboard.php");
 		}
 		else{
 			$loginMessage = "Login failed: invalid username or password :(";
@@ -37,6 +49,7 @@ function authenticate($email, $pswd)
 				$first_name = "";
 	    		if ($sql->bind_result($first_name) === TRUE){
 	    			if ($sql->fetch() === TRUE){
+	    				$_SESSION["user"] = $first_name;
 	    				$retVal = TRUE;
 	    			}
 	    		} 

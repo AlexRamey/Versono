@@ -52,6 +52,26 @@
 					}
 				}
 
+				# Verify that first/last names don't contain numbers
+				if ($firstNameErr == ""){
+					if (!ctype_alpha($first_name)){
+						$firstNameErr = "First name may not contain a number.";
+					}
+				}
+
+				if ($lastNameErr == ""){
+					if (!ctype_alpha($last_name)){
+						$lastNameErr = "Last name may not contain a number.";
+					}
+				}
+
+				# Verify that zip code contains only numbers
+				if ($zipErr == ""){
+					if (!ctype_digit($zip)){
+						$zipErr = "Zip code may only contain digits (0-9).";
+					}
+				}
+
 				# Verify that email matches regEx "*@*.*"
 				if ($emailErr == ""){
 					$email = filter_var($email, FILTER_VALIDATE_EMAIL);

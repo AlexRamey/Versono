@@ -164,7 +164,7 @@
 			}
 	?>
 
-	<body class="no-sidebar">
+	<body class="no-sidebar" onload="verifyMatchingPasswords()">
 		<div id="page-wrapper">
 
 			<!-- Header -->

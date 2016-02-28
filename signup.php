@@ -52,26 +52,6 @@
 					}
 				}
 
-				# Verify that first/last names don't contain numbers
-				if ($firstNameErr == ""){
-					if (!ctype_alpha($first_name)){
-						$firstNameErr = "First name may not contain a number.";
-					}
-				}
-
-				if ($lastNameErr == ""){
-					if (!ctype_alpha($last_name)){
-						$lastNameErr = "Last name may not contain a number.";
-					}
-				}
-
-				# Verify that zip code contains only numbers
-				if ($zipErr == ""){
-					if (!ctype_digit($zip)){
-						$zipErr = "Zip code may only contain digits (0-9).";
-					}
-				}
-
 				# Verify that email matches regEx "*@*.*"
 				if ($emailErr == ""){
 					$email = filter_var($email, FILTER_VALIDATE_EMAIL);
@@ -195,42 +175,48 @@
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 							<div>
 								Email:<br>
-								<input type="email" name="email" placeholder="user@domain.com" maxlength="50" value=<?php echo $email;?>>
-								<label class="notify_label"><?php echo $emailErr;?></label>
+								<input type="email" name="email" id="email_input" onblur="verifyEmail()" placeholder="user@domain.com" maxlength="50" value=<?php echo $email;?>>
+								<label class="notify_label" text="" id="email_feedback"><?php echo $emailErr;?></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="form_text_input">
   								First name:<br>
-  								<input type="text" name="first_name" placeholder="First Name" maxlength="50" value=<?php echo $first_name;?>>
-  								<label class="notify_label"><?php echo $firstNameErr;?></label>
+  								<input type="text" name="first_name" id="fname_input" onblur="verifyName(0)" placeholder="First Name" maxlength="50" value=<?php echo $first_name;?>>
+  								<label class="notify_label" text="" id="name_feedback"><?php echo $firstNameErr;?></label>
   							</div>
   							<div class="form_text_input">
   								Last name:<br>
-								<input type="text" name="last_name" placeholder="Last Name" maxlength="50" value=<?php echo $last_name;?>>
+								<input type="text" name="last_name" id="lname_input" onblur="verifyName(1)" placeholder="Last Name" maxlength="50" value=<?php echo $last_name;?>>
 								<label class="notify_label"><?php echo $lastNameErr;?></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="form_text_input">
 								Password:<br>
-								<input type="password" name="pswd" onkeyup="verifyMatchingPasswords()" id="pswd_input_1" maxlength="50" value=<?php echo $pswd;?>>
+								<input type="password" name="pswd" onblur="verifyPassword(0)" onkeyup="verifyMatchingPasswords()" id="pswd_input_1" maxlength="50" value=<?php echo $pswd;?>>
 								<label class="notify_label"><?php echo $pswdErr;?></label>
+								<label class="notify_label" text="" id="pswd_empty_feedback"></label>
+
 							</div>
 							<div class="form_text_input">
 								Confirm Password:<br>
-								<input type="password" name="pswd_conf" onkeyup="verifyMatchingPasswords()" id="pswd_input_2" maxlength="50" value=<?php echo $conf_pswd;?>>
+								<input type="password" name="pswd_conf" onblur="verifyPassword(1)" onkeyup="verifyMatchingPasswords()" id="pswd_input_2" maxlength="50" value=<?php echo $conf_pswd;?>>
 								<label class="notify_label" text="" id="pswd_neg_feedback"></label>
 								<label class="green_label" text="" id="pswd_pos_feedback"></label>
+								<label class="notify_label" text="" id="con_pswd_empty_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="form_text_input">
 								Street Address:<br>
-								<input type="text" name="street_address" maxlength="50" value=<?php echo $addr;?>>
+								<input type="text" name="street_address" onblur="verifyAddress()" id="addr_input" maxlength="50" value=<?php echo $addr;?>>
 								<label class="notify_label"><?php echo $addrErr;?></label>
+								<label class="notify_label" text="" id="addr_feedback"></label>								
+
 							</div>
 							<div class="form_text_input">
 								City:<br>
-								<input type="text" name="city" maxlength="50" value=<?php echo $city;?>>
+								<input type="text" name="city" maxlength="50" onblur="verifyCity()" id="city_input" value=<?php echo $city;?>>
 								<label class="notify_label"><?php echo $cityErr;?></label>
+								<label class="notify_label" text="" id="city_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="form_text_input">
@@ -292,8 +278,9 @@
 							</div>
 							<div class="form_text_input">
 								Zip:<br>
-								<input type="text" name="zip_code" maxlength="15" value=<?php echo $zip;?>>
+								<input type="text" name="zip_code" onblur="verifyZip()" id="zip_input" maxlength="15" value=<?php echo $zip;?>>
 								<label class="notify_label"><?php echo $zipErr;?></label>
+								<label class="notify_label" text="" id="zip_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="submit_btn_holder">

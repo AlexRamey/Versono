@@ -52,6 +52,26 @@
 					}
 				}
 
+			# Verify that first/last names don't contain numbers
+ 				if ($firstNameErr == ""){
+ 					if (!ctype_alpha($first_name)){
+ 						$firstNameErr = "Your name may only use alphabetic characters.";
+ 					}
+ 				}
+ 
+ 				if ($lastNameErr == ""){
+ 					if (!ctype_alpha($last_name)){
+ 						$lastNameErr = "Your name may only use alphabetic characters.";
+ 					}
+ 				}
+ 
+ 				# Verify that zip code contains only numbers
+ 				if ($zipErr == ""){
+ 					if (!ctype_digit($zip)){
+ 						$zipErr = "Your ZIP code must consist of 5 digits.";
+ 					}
+ 				}
+
 				# Verify that email matches regEx "*@*.*"
 				if ($emailErr == ""){
 					$email = filter_var($email, FILTER_VALIDATE_EMAIL);

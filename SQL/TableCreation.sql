@@ -8,5 +8,6 @@ create table versono_user
     state			varchar(50),
     zip_code		varchar(15),
     user_password   char(64),
+    stripe_customer_id		varchar(50),
     primary key(email)
 );

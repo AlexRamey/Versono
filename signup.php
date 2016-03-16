@@ -20,13 +20,13 @@
 			$signUpMessage = "";
 			$email = $first_name = $last_name = $pswd = $conf_pswd = "";
 			$emailErr = $firstNameErr = $lastNameErr = $pswdErr = "";
-			$addr = $city = $state = $zip = "";
+			$addr = $city = $state = $zip = $token = "";
 			$addrErr = $cityErr = $stateErr = $zipErr = "";
 
 			$names = array("email", "first_name", "last_name", "pswd",
-			 "street_address", "city", "state", "zip_code");
+			 "street_address", "city", "state", "zip_code", "stripeToken");
 			$values = array(&$email, &$first_name, &$last_name, &$pswd,
-				&$addr, &$city, &$state, &$zip);
+				&$addr, &$city, &$state, &$zip, &$token);
 			$errors = array(&$emailErr, &$firstNameErr, &$lastNameErr, &$pswdErr,
 				&$addrErr, &$cityErr, &$stateErr, &$zipErr);
 
@@ -139,12 +139,12 @@
 				
 				$errorNum = 0;
 				$errorMsg = "";
-				$sql = $conn->prepare("INSERT INTO versono_user(email, first_name, last_name, user_password, address, city, state, zip_code) VALUES (?,?,?,?,?,?,?,?)");
+				$sql = $conn->prepare("INSERT INTO versono_user(email, first_name, last_name, user_password, address, city, state, zip_code, stripe_customer_id) VALUES (?,?,?,?,?,?,?,?,?)");
 				if ($sql == False){
 					$isSuccess = False;
 				}
 				else{
-					$sql->bind_param('ssssssss', $values[0], $values[1], $values[2], hash("sha256", $values[3], False), $values[4], $values[5], $values[6], $values[7]);
+					$sql->bind_param('sssssssss', $values[0], $values[1], $values[2], hash("sha256", $values[3], False), $values[4], $values[5], $values[6], $values[7], createCustomer($values[8]));
 
 					if ($sql->execute() === True) {
 					    # success
@@ -161,6 +161,29 @@
 
 				$conn->close();
 				return array($isSuccess, $errorNum, $errorMsg);
+			}
+
+			function createCustomer($token){
+				// Set your secret key: remember to change this to your live secret key in production
+				// See your keys here https://dashboard.stripe.com/account/apikeys
+				require('vendor/autoload.php'); 
+				\Stripe\Stripe::setApiKey("sk_test_Q10y7Sg9aUfGbRaSjP2bkekG");
+
+				// Create the charge on Stripe's servers - this will charge the user's card
+				// Create a Customer
+				$customer = \Stripe\Customer::create(array(
+				  "source" => $token,
+				  "description" => "Example customer")
+				);
+
+				// Charge the Customer instead of the card
+				\Stripe\Charge::create(array(
+				  "amount" => 100, // amount in cents, again
+				  "currency" => "usd",
+				  "customer" => $customer->id)
+				);
+
+				return $customer->id;
 			}
 	?>
 
@@ -186,13 +209,15 @@
 						<br>
 						<br>
 						<h4><?php echo $signUpMessage;?></h4>
+						<h3 id="payment_errors"></h3>
 					</div>
 				</div>
 
 			<!-- Main -->
 				<div id="main-wrapper">
 					<div class="container">
-						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+						<!-- <form id="signup-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> -->
+						<form id="signup-form" action="" method="post">
 							<div id="header">
 								<h3>Personal Information</h3>
 							</div>
@@ -312,18 +337,18 @@
 							</div>
 							<div class="form_half_text_input">
 								Name on Card:<br>
-								<input type="text" name="card_name" id="card_name" placeholder="Cardholder Name" maxlength="50">
+								<input type="text" id="card_name" data-stripe="name" placeholder="Cardholder Name" maxlength="50">
 								<label class="notify_label" text="" id="card_name_feedback"></label>
 							</div>
 							<div class="form_half_text_input">
 								Card Number:<br>
-								<input type="text" name="card_number" id="card_number" placeholder="Credit/Debit Card Number" maxlength="16">
+								<input type="text" id="card_number" data-stripe="number" placeholder="Credit/Debit Card Number" maxlength="16">
 								<label class="notify_label" text="" id="card_number_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="form_mini_text_input">
 								Expiration Month <br>
-								<select name="expiration_month">
+								<select data-stripe="exp-month">
 									<option value="1">01</option>
 									<option value="2">02</option>
 									<option value="3">03</option>
@@ -340,7 +365,7 @@
 							</div>
 							<div class="form_mini_text_input">
 								Expiration Year <br>
-								<select name="expiration_year">
+								<select data-stripe="exp-year">
 									<option value="2016">2016</option>
 									<option value="2017">2017</option>
 									<option value="2018">2018</option>
@@ -355,12 +380,12 @@
 							</div>
 							<div class="form_mini_text_input">
 								CVC<br>
-								<input type="text" name="csv_number" id="csv_number" placeholder="CSV" maxlength="4">
+								<input type="text" id="csv_number" data-stripe="cvc" placeholder="CSV" maxlength="4">
 								<label class="notify_label" text="" id="csv_number_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="submit_btn_holder">
-								<input type="submit" value="Submit">
+								<input type="submit" id="submit_btn" value="Submit">
 							</div>
 						</form>
 					</div>
@@ -395,5 +420,39 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+			<script type="text/javascript">
+  				// This identifies your website in the createToken call below
+  				Stripe.setPublishableKey('pk_test_0cxD7MvK3NG8WaLoBOXG13nd');
+  				jQuery(function($) {
+				  $('#signup-form').submit(function(event) {
+				    var $form = $(this);
+
+				    // Disable the submit button to prevent repeated clicks
+				    $form.find('submit_btn').prop('disabled', true);
+				    Stripe.card.createToken($form, stripeResponseHandler);
+
+				    // Prevent the form from submitting with the default action
+				    return false;
+				  });
+				});
+  				function stripeResponseHandler(status, response) {
+				  var $form = $('#signup-form');
+				  if (response.error) {
+				    // Show the errors on the form
+				    $form.find('.payment_errors').text(response.error.message);
+				    $form.find('submit_btn').prop('disabled', false);
+				  } else {
+				    // response contains id and card, which contains additional card details
+				    var token = response.id;
+				    // Insert the token into the form so it gets submitted to the server
+				    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+				    // and submit
+				    $form.get(0).submit();
+				  }
+				};
+  				// ...
+			</script>
+			 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	</body>
 </html>

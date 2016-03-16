@@ -50,6 +50,7 @@ function authenticate($email, $pswd)
 	    		if ($sql->bind_result($first_name) === TRUE){
 	    			if ($sql->fetch() === TRUE){
 	    				$_SESSION["user"] = $first_name;
+	    				$_SESSION["email"] = $email;
 	    				$retVal = TRUE;
 	    			}
 	    		} 

@@ -193,31 +193,34 @@
 				<div id="main-wrapper">
 					<div class="container">
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-							<div>
+							<div id="header">
+								<h3>Personal Information</h3>
+							</div>
+							<div class="form_full_text_input">
 								Email:<br>
 								<input type="email" name="email" id="email_input" onblur="verifyEmail()" placeholder="user@domain.com" maxlength="50" value=<?php echo $email;?>>
 								<label class="notify_label" text="" id="email_feedback"><?php echo $emailErr;?></label>
 							</div>
 							<div class="clear">&nbsp;</div>
-							<div class="form_text_input">
+							<div class="form_half_text_input">
   								First name:<br>
   								<input type="text" name="first_name" id="fname_input" onblur="verifyName(0)" placeholder="First Name" maxlength="50" value=<?php echo $first_name;?>>
   								<label class="notify_label" text="" id="name_feedback"><?php echo $firstNameErr;?></label>
   							</div>
-  							<div class="form_text_input">
+  							<div class="form_half_text_input">
   								Last name:<br>
 								<input type="text" name="last_name" id="lname_input" onblur="verifyName(1)" placeholder="Last Name" maxlength="50" value=<?php echo $last_name;?>>
 								<label class="notify_label"><?php echo $lastNameErr;?></label>
 							</div>
 							<div class="clear">&nbsp;</div>
-							<div class="form_text_input">
+							<div class="form_half_text_input">
 								Password:<br>
 								<input type="password" name="pswd" onblur="verifyPassword(0)" onkeyup="verifyMatchingPasswords()" id="pswd_input_1" maxlength="50" value=<?php echo $pswd;?>>
 								<label class="notify_label"><?php echo $pswdErr;?></label>
 								<label class="notify_label" text="" id="pswd_empty_feedback"></label>
 
 							</div>
-							<div class="form_text_input">
+							<div class="form_half_text_input">
 								Confirm Password:<br>
 								<input type="password" name="pswd_conf" onblur="verifyPassword(1)" onkeyup="verifyMatchingPasswords()" id="pswd_input_2" maxlength="50" value=<?php echo $conf_pswd;?>>
 								<label class="notify_label" text="" id="pswd_neg_feedback"></label>
@@ -225,21 +228,21 @@
 								<label class="notify_label" text="" id="con_pswd_empty_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
-							<div class="form_text_input">
+							<div class="form_half_text_input">
 								Street Address:<br>
 								<input type="text" name="street_address" onblur="verifyAddress()" id="addr_input" maxlength="50" value=<?php echo $addr;?>>
 								<label class="notify_label"><?php echo $addrErr;?></label>
 								<label class="notify_label" text="" id="addr_feedback"></label>								
 
 							</div>
-							<div class="form_text_input">
+							<div class="form_half_text_input">
 								City:<br>
 								<input type="text" name="city" maxlength="50" onblur="verifyCity()" id="city_input" value=<?php echo $city;?>>
 								<label class="notify_label"><?php echo $cityErr;?></label>
 								<label class="notify_label" text="" id="city_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
-							<div class="form_text_input">
+							<div class="form_half_text_input">
 								State:<br>
 								<select name="state" size="3">
 									<option value="AL" <?php if($state == 'AL'){echo("selected");}?>>Alabama</option>
@@ -296,11 +299,64 @@
 								</select>
 								<label class="notify_label"><?php echo $stateErr;?></label>
 							</div>
-							<div class="form_text_input">
+							<div class="form_half_text_input">
 								Zip:<br>
 								<input type="text" name="zip_code" onblur="verifyZip()" id="zip_input" maxlength="15" value=<?php echo $zip;?>>
 								<label class="notify_label"><?php echo $zipErr;?></label>
 								<label class="notify_label" text="" id="zip_feedback"></label>
+							</div>
+							<div class="clear">&nbsp;</div>
+							<div id="header">
+								<h3>Banking Information</h3>
+								<br>
+							</div>
+							<div class="form_half_text_input">
+								Name on Card:<br>
+								<input type="text" name="card_name" id="card_name" placeholder="Cardholder Name" maxlength="50">
+								<label class="notify_label" text="" id="card_name_feedback"></label>
+							</div>
+							<div class="form_half_text_input">
+								Card Number:<br>
+								<input type="text" name="card_number" id="card_number" placeholder="Credit/Debit Card Number" maxlength="16">
+								<label class="notify_label" text="" id="card_number_feedback"></label>
+							</div>
+							<div class="clear">&nbsp;</div>
+							<div class="form_mini_text_input">
+								Expiration Month <br>
+								<select name="expiration_month">
+									<option value="1">01</option>
+									<option value="2">02</option>
+									<option value="3">03</option>
+									<option value="4">04</option>
+									<option value="5">05</option>
+									<option value="6">06</option>
+									<option value="7">07</option>
+									<option value="8">08</option>
+									<option value="9">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select>
+							</div>
+							<div class="form_mini_text_input">
+								Expiration Year <br>
+								<select name="expiration_year">
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option value="2019">2019</option>
+									<option value="2020">2020</option>
+									<option value="2021">2021</option>
+									<option value="2022">2022</option>
+									<option value="2023">2023</option>
+									<option value="2024">2024</option>
+									<option value="2025">2025</option>
+								</select>
+							</div>
+							<div class="form_mini_text_input">
+								CSV<br>
+								<input type="text" name="csv_number" id="csv_number" placeholder="CSV" maxlength="3">
+								<label class="notify_label" text="" id="csv_number_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="submit_btn_holder">
@@ -339,6 +395,5 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
 	</body>
 </html>

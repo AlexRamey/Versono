@@ -2,12 +2,25 @@
   clear:both;
 }
 
-.form_text_input{
+.form_mini_text_input{
+   width:25%;
+   float:left;
+   padding-left: 8px;
+   padding-right: 8px;
+}
+
+.form_half_text_input{
    width:50%;
    float:left;
    padding-left: 8px;
-   padding-left: 8px;
+   padding-right: 8px;
+}
 
+.form_full_text_input{
+	width:100%;
+	float:left;
+   	padding-left: 8px;
+   	padding-right: 8px;
 }
 
 .submit_btn_holder{ 

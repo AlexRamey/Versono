@@ -190,28 +190,7 @@
 	<body class="no-sidebar" onload="verifyMatchingPasswords()">
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div id="header">
-
-						<!-- Logo -->
-							<h1>Sign Up</h1>
-
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li><a href="about.html">About Us</a></li>
-									<li class="current"><a href="signup.php">Sign Up</a></li>
-								</ul>
-							</nav>
-						<!-- Special Message Space -->
-						<br>
-						<br>
-						<h4><?php echo $signUpMessage;?></h4>
-						<h3 id="payment_errors"></h3>
-					</div>
-				</div>
+		<?php include 'header.php';?>
 
 			<!-- Main -->
 				<div id="main-wrapper">
@@ -391,23 +370,7 @@
 					</div>
 				</div>
 
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<section id="footer" class="container">
-						<div class="row">
-							<div class="12u">
-
-								<!-- Copyright -->
-									<div id="copyright">
-										<ul class="links">
-											<li>&copy; 2016 Versono, Inc. All rights reserved.</li>
-											<li>Kochubeevsky Ramey Lee</li>
-										</ul>
-									</div>
-							</div>
-						</div>
-					</section>
-				</div>
+			<?php include 'footer.php';?>
 
 		</div>
 

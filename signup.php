@@ -354,8 +354,8 @@
 								</select>
 							</div>
 							<div class="form_mini_text_input">
-								CSV<br>
-								<input type="text" name="csv_number" id="csv_number" placeholder="CSV" maxlength="3">
+								CVC<br>
+								<input type="text" name="csv_number" id="csv_number" placeholder="CSV" maxlength="4">
 								<label class="notify_label" text="" id="csv_number_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>

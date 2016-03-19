@@ -209,7 +209,6 @@
 					<br>
 					<br>
 					<h4><?php echo $signUpMessage;?></h4>
-					<h3 id="payment_errors"></h3>
 				</div>
 			</div>
 
@@ -326,23 +325,26 @@
 							</div>
 							<div class="form_half_text_input">
 								Zip:<br>
-								<input type="text" name="zip_code" onblur="verifyZip()" id="zip_input" maxlength="15" value=<?php echo $zip;?>>
+								<input type="text" name="zip_code" onblur="verifyZip()" id="zip_input" maxlength="5" value=<?php echo $zip;?>>
 								<label class="notify_label"><?php echo $zipErr;?></label>
 								<label class="notify_label" text="" id="zip_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div id="header">
 								<h3>Banking Information</h3>
+								<div class="form_full_text_input">
+									<label class="notify_label" id="payment_errors" text=""></label>
+								</div>
 								<br>
 							</div>
 							<div class="form_half_text_input">
 								Name on Card:<br>
-								<input type="text" id="card_name" data-stripe="name" placeholder="Cardholder Name" maxlength="50">
+								<input type="text" id="card_name" data-stripe="name" onblur="verifyCardName()" placeholder="Cardholder Name" maxlength="50">
 								<label class="notify_label" text="" id="card_name_feedback"></label>
 							</div>
 							<div class="form_half_text_input">
 								Card Number:<br>
-								<input type="text" id="card_number" data-stripe="number" placeholder="Credit/Debit Card Number" maxlength="16">
+								<input type="text" id="card_number" data-stripe="number" onblur="verifyCardNumber()" placeholder="Credit/Debit Card Number" maxlength="16">
 								<label class="notify_label" text="" id="card_number_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
@@ -380,8 +382,8 @@
 							</div>
 							<div class="form_mini_text_input">
 								CVC<br>
-								<input type="text" id="csv_number" data-stripe="cvc" placeholder="CSV" maxlength="4">
-								<label class="notify_label" text="" id="csv_number_feedback"></label>
+								<input type="text" id="cvc_number" data-stripe="cvc" onblur="verifyCVCNumber()" placeholder="CVC" maxlength="3">
+								<label class="notify_label" text="" id="cvc_number_feedback"></label>
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div class="submit_btn_holder">

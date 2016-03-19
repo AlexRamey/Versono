@@ -126,8 +126,47 @@ function verifyZip() {
 		}
 		else {
 			document.getElementById("zip_feedback").innerHTML = empty_string;
-
 		}
 
+	}
+}
+
+function verifyCardName(){
+	var name = document.getElementById("card_name").value;
+
+	if (name.localeCompare(empty_string) == 0){
+		document.getElementById("card_name_feedback").innerHTML = feedback_empty;
+	}else{
+		document.getElementById("card_name_feedback").innerHTML = empty_string;
+	}
+}
+
+function verifyCardNumber(){
+	var number = document.getElementById("card_number").value;
+
+	if (number.localeCompare(empty_string) == 0){
+		document.getElementById("card_number_feedback").innerHTML = feedback_empty;
+	}else{
+		if (!(/^[0-9]{16}$/.test(number))) {
+			document.getElementById("card_number_feedback").innerHTML = "Card number must be 16 digits long.";
+		}
+		else {
+			document.getElementById("card_number_feedback").innerHTML = empty_string;
+		}
+	}
+}
+
+function verifyCVCNumber(){
+	var cvc = document.getElementById("cvc_number").value;
+
+	if (cvc.localeCompare(empty_string) == 0){
+		document.getElementById("cvc_number_feedback").innerHTML = feedback_empty;
+	}else{
+		if (!(/^[0-9]{3}$/.test(cvc))) {
+			document.getElementById("cvc_number_feedback").innerHTML = "CVC must be 3 digits long.";
+		}
+		else {
+			document.getElementById("cvc_number_feedback").innerHTML = empty_string;
+		}
 	}
 }

@@ -137,7 +137,25 @@ function verifyCardName(){
 	if (name.localeCompare(empty_string) == 0){
 		document.getElementById("card_name_feedback").innerHTML = feedback_empty;
 	}else{
-		document.getElementById("card_name_feedback").innerHTML = empty_string;
+		if (!(/^[a-zA-Z ]+$/.test(name))) {
+			document.getElementById("card_name_feedback").innerHTML = "Name may only contain letters and spaces.";
+		}else{
+			document.getElementById("card_name_feedback").innerHTML = empty_string;
+		}
+	}
+}
+
+function setSubmitState(){
+	var name = document.getElementById("card_name").value;
+
+	if (name.localeCompare(empty_string) == 0){
+	    document.getElementById('submit_btn').disabled = true;
+	}else{
+		if (!(/^[a-zA-Z ]+$/.test(name))) {
+			document.getElementById('submit_btn').disabled = true;
+		}else{
+			document.getElementById('submit_btn').disabled = false;
+		}
 	}
 }
 

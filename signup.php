@@ -385,7 +385,7 @@
 							</div>
 							<div class="form_half_text_input">
 								Name on Card:<br>
-								<input type="text" id="card_name" data-stripe="name" onblur="verifyCardName()" placeholder="Cardholder Name" maxlength="50">
+								<input type="text" id="card_name" data-stripe="name" onblur="verifyCardName()" onkeyup="setSubmitState()" placeholder="Cardholder Name" maxlength="50">
 								<label class="notify_label" text="" id="card_name_feedback"></label>
 							</div>
 							<div class="form_half_text_input">
@@ -456,14 +456,12 @@
 			<script type="text/javascript">
   				// This identifies your website in the createToken call below
   				Stripe.setPublishableKey('pk_test_0cxD7MvK3NG8WaLoBOXG13nd');
+  				document.getElementById('submit_btn').disabled = true;
   				jQuery(function($) {
 				  $('#signup-form').submit(function(event) {
 				    var $form = $(this);
-
-				    // Disable the submit button to prevent repeated clicks
-				    $form.find('submit_btn').prop('disabled', true);
+				   	$form.find('submit_btn').prop('disabled', true);
 				    Stripe.card.createToken($form, stripeResponseHandler);
-
 				    // Prevent the form from submitting with the default action
 				    return false;
 				  });
@@ -475,7 +473,7 @@
 				    document.getElementById("payment_errors").innerHTML = response.error.message;
 				    $form.find('submit_btn').prop('disabled', false);
 				  } else {
-				    // response contains id and card, which contains additional card details
+			  		// response contains id and card, which contains additional card details
 				    var token = response.id;
 				    // Insert the token into the form so it gets submitted to the server
 				    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
@@ -483,7 +481,6 @@
 				    $form.get(0).submit();
 				  }
 				};
-  				// ...
 			</script>
 			 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	</body>

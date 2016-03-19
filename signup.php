@@ -95,6 +95,12 @@
 					$postRetVal = post_data($values);
 					if ($postRetVal[0] === TRUE){
 						$signUpMessage = "Sign up Successful!";
+						if (sendEmail($values[0], $values[1])):
+							$signUpMessage = $signUpMessage . "<br/> Email sent.";
+						else:
+							$signUpMessage = $signUpMessage . "<br/> Email not sent.";
+						endif;
+
 						$arrlength = count($values);
 						for($x = 0; $x < $arrlength; $x++){
 							$values[$x] = "";
@@ -184,6 +190,46 @@
 				);
 
 				return $customer->id;
+			}
+
+			function sendEmail($email_addr, $username) {
+			  $mailpath = '/Applications/XAMPP/xamppfiles/PHPMailer';
+			  
+			  // Add the new path items to the previous PHP path
+			  $path = get_include_path();
+			  set_include_path($path . PATH_SEPARATOR . $mailpath);
+			  require 'PHPMailerAutoload.php';
+
+			  $mail = new PHPMailer();
+			 
+			  $mail->IsSMTP(); // telling the class to use SMTP
+			  $mail->SMTPAuth = true; // enable SMTP authentication
+			  $mail->SMTPSecure = "tls"; // sets tls authentication
+			  $mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server; or your email service
+			  $mail->Port = 587; // set the SMTP port for GMAIL server; or your email server port
+			  $mail->Username = "versono4753@gmail.com"; // email username
+			  $mail->Password = "dontstrainyourself"; // email password
+			  $mail->isHTML(True);
+
+			  $subj = "Hi, $username! Thanks for signing up with Versono.";
+			  $msg = "You have been <b>charged</b>";
+
+			  // Put information into the message
+			  $mail->addAddress($email_addr);
+			  $mail->SetFrom("x@y.z");
+			  $mail->Subject = "$subj";
+			  $mail->Body = "$msg";
+
+			  // echo 'Everything ok so far' . var_dump($mail);
+			  // if(!$mail->send()) {
+			  //   echo 'Message could not be sent.';
+			  //   echo 'Mailer Error: ' . $mail->ErrorInfo;
+			  //  } 
+			  //  else { echo 'Message has been sent'; }
+
+			  return $mail->send();
+
+				/////
 			}
 	?>
 

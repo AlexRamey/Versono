@@ -81,7 +81,27 @@ function authenticate($email, $pswd)
 	<body class="no-sidebar">
 		<div id="page-wrapper">
 
-			<?php include 'header.php';?>
+			<!-- Header -->
+			<div id="header-wrapper">
+				<div id="header">
+
+					<!-- Logo -->
+						<h1>Versono</h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="signup.php">Sign Up</a></li>
+							</ul>
+						</nav>
+					<!-- Special Message Space -->
+					<br>
+					<br>
+					<h4><?php echo $loginMessage;?></h4>
+				</div>
+			</div>
 
 			<!-- Main -->
 			<div id="main-wrapper">

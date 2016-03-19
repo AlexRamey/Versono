@@ -190,7 +190,28 @@
 	<body class="no-sidebar" onload="verifyMatchingPasswords()">
 		<div id="page-wrapper">
 
-		<?php include 'header.php';?>
+			<!-- Header -->
+			<div id="header-wrapper">
+				<div id="header">
+
+					<!-- Logo -->
+						<h1>Sign Up</h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li class="current"><a href="signup.php">Sign Up</a></li>
+							</ul>
+						</nav>
+					<!-- Special Message Space -->
+					<br>
+					<br>
+					<h4><?php echo $signUpMessage;?></h4>
+					<h3 id="payment_errors"></h3>
+				</div>
+			</div>
 
 			<!-- Main -->
 				<div id="main-wrapper">
@@ -403,7 +424,7 @@
 				  var $form = $('#signup-form');
 				  if (response.error) {
 				    // Show the errors on the form
-				    $form.find('.payment_errors').text(response.error.message);
+				    document.getElementById("payment_errors").innerHTML = response.error.message;
 				    $form.find('submit_btn').prop('disabled', false);
 				  } else {
 				    // response contains id and card, which contains additional card details

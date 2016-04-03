@@ -28,72 +28,110 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
-</head>
+    </head>
 
-<body>
-<?php
-    session_start();
+    <body>
+        <?php
+        session_start();
 
-    if(isset($_SESSION["user"])):
-        $name = $_SESSION["user"];
-    else:
-        $_SESSION["login_guard"] = "You must be logged in to view the Dashboard<br/>";
+        if(isset($_SESSION["user"])):
+            $name = $_SESSION["user"];
+        else:
+            $_SESSION["login_guard"] = "You must be logged in to view the Dashboard<br/>";
         header("Location: login.php");
-    endif;
-?>
+        endif;
+        ?>
 
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <?php include 'navbar.php';?>
+            <?php include 'navbar.php';?>
 
-        <div id="page-wrapper">
+            <div id="page-wrapper">
 
-            <div class="container-fluid">
+                <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Sell <small><?php echo $name; ?></small>
-                        </h1>
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Sell <small><?php echo $name; ?></small>
+                            </h1>
+                        </div>
                     </div>
-                </div>
-                <!-- /.row -->
+                    <!-- /.row -->
 
-                <div class="row">
-                    <div class="col-lg-12">
-                    Upload a Song!
-                        <form>
-                        Title: <input type="text" name="title">
-                        Artist: <input type="text" name="artist">
-                        </form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            Upload a Song!
+                            <form action="upload.php" method="post">
+                                Title: <input type="text" name="title">
+                                Artist: <input type="text" name="artist">
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <!-- /.row -->
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            Your music!
+                            <?php
 
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $db_name = "versono_db";
+// Create connection
+                            $conn = new mysqli($servername, $username, $password, $db_name);
+
+// Check connection
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+                            $sql = $conn->prepare("SELECT title, artist FROM song WHERE email = ?");
+                            if ($sql->bind_param('s', $_SESSION['email']) === TRUE){
+                                if ($sql->execute() === TRUE) {
+                                    $title = "";
+                                    $artist = "";
+                                    $sql->bind_result($title, $artist);
+                                    echo "<table class='table'>";
+                                    echo "<thead><tr><td>Title</td><td>Artist</td></tr></thead><tbody>";
+                                    while($sql->fetch() == TRUE){
+                                        echo "<tr><td>";
+                                        echo $title;
+                                        echo "</td><td>";
+                                        echo $artist;
+                                    }
+                                    echo "</td></tr></tbody></table>";
+                                    $sql->close();
+                                    $conn->close();
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /#page-wrapper -->
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="assets/js/jquery.js"></script>
 
-    <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="assets/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
+        <!-- Morris Charts JavaScript -->
+        <script src="assets/js/plugins/morris/raphael.min.js"></script>
+        <script src="assets/js/plugins/morris/morris.min.js"></script>
+        <script src="assets/js/plugins/morris/morris-data.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="assets/js/plugins/morris/morris.min.js"></script>
-    <script src="assets/js/plugins/morris/morris-data.js"></script>
+    </body>
 
-</body>
-
-</html>
+    </html>

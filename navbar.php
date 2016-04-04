@@ -75,7 +75,7 @@
                         <a href="dashboard2.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Buy</a>
+                        <a href="buy.php"><i class="fa fa-fw fa-bar-chart-o"></i> Buy</a>
                     </li>
                     <li>
                         <a href="sell.php"><i class="fa fa-fw fa-table"></i> Sell</a>

@@ -4,6 +4,8 @@ session_start();
 $title = $_POST['title'];
 $artist = $_POST['artist'];
 $email = $_SESSION['email'];
+$album = $_POST['album'];
+$price = $_POST['price'];
 
 $servername = "localhost";
 $username = "root";
@@ -17,8 +19,8 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = $conn->prepare("INSERT INTO song(title, artist, email) VALUES (?,?,?)");
-if ($sql->bind_param('sss', $title, $artist, $email) === TRUE){
+$sql = $conn->prepare("INSERT INTO song(title, artist, email, album, price) VALUES (?,?,?,?,?)");
+if ($sql->bind_param('sssss', $title, $artist, $email, $album, $price) === TRUE){
 	if ($sql->execute() === TRUE) { 
 			$sql->close();
 			$conn->close();

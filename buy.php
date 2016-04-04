@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sell</title>
+    <title>Buy</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -56,28 +56,14 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Sell
+                                Buy
                             </h1>
                         </div>
                     </div>
                     <!-- /.row -->
-
                     <div class="row">
                         <div class="col-lg-12">
-                            Upload a Song!
-                            <form action="upload.php" method="post">
-                                Title: <input type="text" name="title">
-                                Artist: <input type="text" name="artist">
-                                Album: <input type="text" name="album">
-                                Price: <input type="text" name="price">
-                                <input type="submit" value="Submit">
-                            </form>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            Your music!
+                            Music for purchase
                             <?php
 
                             $servername = "localhost";
@@ -91,29 +77,33 @@
                             if ($conn->connect_error) {
                                 die("Connection failed: " . $conn->connect_error);
                             }
-                            $sql = $conn->prepare("SELECT title, artist, album, price FROM song WHERE email = ?");
-                            if ($sql->bind_param('s', $_SESSION['email']) === TRUE){
-                                if ($sql->execute() === TRUE) {
-                                    $title = "";
-                                    $artist = "";
-                                    $sql->bind_result($title, $artist, $album, $price);
-                                    echo "<table class='table'>";
-                                    echo "<thead><tr><td>Title</td><td>Artist</td><td>Album</td><td>Price</td></tr></thead><tbody>";
-                                    while($sql->fetch() == TRUE){
-                                        echo "<tr><td>";
-                                        echo $title;
-                                        echo "</td><td>";
-                                        echo $artist;
-                                        echo "</td><td>";
-                                        echo $album;
-                                        echo "</td><td>";
-                                        echo $price;
-                                    }
-                                    echo "</td></tr></tbody></table>";
-                                    $sql->close();
-                                    $conn->close();
+                            $sql = $conn->prepare("SELECT title, artist, album, price, id FROM song");
+                            
+                            if ($sql->execute() === TRUE) {
+                                $title = "";
+                                $artist = "";
+                                $album = "";
+                                $price = "";
+                                $sql->bind_result($title, $artist, $album, $price, $id);
+                                echo "<table class='table'>";
+                                echo "<thead><tr><td>Title</td><td>Artist</td><td>Album</td><td>Price</td></tr></thead><tbody>";
+                                while($sql->fetch() == TRUE){
+                                    echo "<tr><td>";
+                                    echo $title;
+                                    echo "</td><td>";
+                                    echo $artist;
+                                    echo "</td><td>";
+                                    echo $album;
+                                    echo "</td><td>";
+                                    echo $price;
+                                    echo "</td><td>";
+                                    echo "<form action='buysong.php' method='post'><input type='hidden' name='id' value='" . $id . "'> <button type='submit'>Buy</button></form>";
                                 }
+                                echo "</td></tr></tbody></table>";
+                                $sql->close();
+                                $conn->close();
                             }
+                            
                             ?>
                         </div>
                     </div>

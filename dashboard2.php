@@ -28,96 +28,121 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
-</head>
+    </head>
 
-<body>
-<?php
-    session_start();
+    <body>
+        <?php
+        session_start();
 
-    if(isset($_SESSION["user"])):
-        $name = $_SESSION["user"];
-    else:
-        $_SESSION["login_guard"] = "You must be logged in to view the Dashboard<br/>";
+        if(isset($_SESSION["user"])):
+            $name = $_SESSION["user"];
+        else:
+            $_SESSION["login_guard"] = "You must be logged in to view the Dashboard<br/>";
         header("Location: login.php");
-    endif;
-?>
+        endif;
+        ?>
 
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <?php include 'navbar.php';?>
+            <?php include 'navbar.php';?>
 
-        <div id="page-wrapper">
+            <div id="page-wrapper">
 
-            <div class="container-fluid">
+                <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Dashboard <small><?php echo $name; ?></small>
-                        </h1>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Hello!</strong> Welcome to Versono!
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Dashboard <small><?php echo $name; ?></small>
+                            </h1>
                         </div>
                     </div>
-                </div>
-                <!-- /.row -->
+                    <!-- /.row -->
 
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-comments fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>Sales!</div>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <i class="fa fa-info-circle"></i>  <strong>Hello!</strong> Welcome to Versono!
                             </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
                         </div>
                     </div>
+                    <!-- /.row -->
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?php
+
+                                                $servername = "localhost";
+                                                $username = "root";
+                                                $password = "";
+                                                $db_name = "versono_db";
+// Create connection
+                                                $conn = new mysqli($servername, $username, $password, $db_name);
+
+// Check connection
+                                                if ($conn->connect_error) {
+                                                    die("Connection failed: " . $conn->connect_error);
+                                                }
+                                                $sql = $conn->prepare("SELECT SUM(numsold) FROM song WHERE email = ?");
+                                                if ($sql->bind_param('s', $_SESSION['email']) === TRUE){
+                                                    if ($sql->execute() === TRUE) { 
+                                                        $sql->bind_result($numsold);
+                                                        $sql->fetch();
+                                                        echo $numsold;
+                                                        $sql->close();
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
+                                            <div>Sales!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+
+
                 </div>
-                <!-- /.row -->
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /#page-wrapper -->
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="assets/js/jquery.js"></script>
 
-    <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="assets/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
+        <!-- Morris Charts JavaScript -->
+        <script src="assets/js/plugins/morris/raphael.min.js"></script>
+        <script src="assets/js/plugins/morris/morris.min.js"></script>
+        <script src="assets/js/plugins/morris/morris-data.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="assets/js/plugins/morris/morris.min.js"></script>
-    <script src="assets/js/plugins/morris/morris-data.js"></script>
+    </body>
 
-</body>
-
-</html>
+    </html>

@@ -62,8 +62,8 @@
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
-                            Music for purchase
+                        <div class="col-lg-10">
+                            <h2>Music for purchase</h2>
                             <?php
 
                             $servername = "localhost";
@@ -85,7 +85,7 @@
                                 $album = "";
                                 $price = "";
                                 $sql->bind_result($title, $artist, $album, $price, $id);
-                                echo "<table class='table'>";
+                                echo "<table class='table table-striped'>";
                                 echo "<thead><tr><td>Title</td><td>Artist</td><td>Album</td><td>Price</td></tr></thead><tbody>";
                                 while($sql->fetch() == TRUE){
                                     echo "<tr><td>";

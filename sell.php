@@ -63,21 +63,34 @@
                     <!-- /.row -->
 
                     <div class="row">
-                        <div class="col-lg-12">
-                            Upload a Song!
-                            <form action="upload.php" method="post">
-                                Title: <input type="text" name="title">
-                                Artist: <input type="text" name="artist">
-                                Album: <input type="text" name="album">
-                                Price: <input type="text" name="price">
-                                <input type="submit" value="Submit">
+                            <h2>Upload a Song!</h2>
+                            <form action="upload.php" method="post" class="form-group">
+                            <div class="col-lg-2">
+                                Title: <input type="text" class="form-control" name="title">
+                                </div>
+                                <div class ="col-lg-2">
+                                Artist: <input type="text" class="form-control" name="artist">
+                                </div>
+                                <div class ="col-lg-2">
+                                Album: <input type="text" class="form-control" name="album">
+                                                                </div>
+                                <div class ="col-lg-2">
+                                Price: <input type="text" class="form-control" name="price">
+                                                                </div>
+                                <div class ="col-lg-2">
+                                Song File: <input type="file"  name="song">
+                                                                </div>
+                                <div class ="col-lg-2">
+
+                                <input type="submit" class="btn btn-default" value="Submit">
+                                </div>
                             </form>
                         </div>
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
-                            Your music!
+                        <div class="col-lg-10">
+                            <h2>Your music!</h2>
                             <?php
 
                             $servername = "localhost";
@@ -97,7 +110,7 @@
                                     $title = "";
                                     $artist = "";
                                     $sql->bind_result($title, $artist, $album, $price);
-                                    echo "<table class='table'>";
+                                    echo "<table class='table table-striped'>";
                                     echo "<thead><tr><td>Title</td><td>Artist</td><td>Album</td><td>Price</td></tr></thead><tbody>";
                                     while($sql->fetch() == TRUE){
                                         echo "<tr><td>";

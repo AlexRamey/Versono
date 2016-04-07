@@ -97,7 +97,7 @@
                                     echo "</td><td>";
                                     echo $price;
                                     echo "</td><td>";
-                                    echo "<form action='buysong.php' method='post'><input type='hidden' name='id' value='" . $id . "'> <button type='submit'>Buy</button></form>";
+                                    echo "<form action='buysong.php' method='post'><input type='hidden' name='id' value='" . $id . "'><input type='hidden' name='sum' value='" . $price . "'><button type='submit'>Buy</button></form>";
                                 }
                                 echo "</td></tr></tbody></table>";
                                 $sql->close();

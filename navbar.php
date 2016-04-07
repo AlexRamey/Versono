@@ -43,10 +43,10 @@
                     </li>
                     <li>
                         <a href="sell.php"><i class="fa fa-fw fa-table"></i> Sell</a>
-                    </li>
+                    </li><!--
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Settings</a>
-                    </li>
+                        <a href="settings.php"><i class="fa fa-fw fa-edit"></i> Settings</a>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

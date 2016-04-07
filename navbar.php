@@ -24,9 +24,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $name; ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><form action="login.php" method="post" name="logoutform">
+                        <li><form action="login.php" method="post" id="logoutform">
                         <input type="hidden" value="logout" name="logout">
-                            <a href="" onclick="document.logoutform.submit();"><i class="fa fa-fw fa-power-off"></i> Log Out</a></form>
+                            <a href="javascript:document.getElementById('logoutform').submit();"><i class="fa fa-fw fa-power-off"></i> Log Out</a></form>
                         </li>
                     </ul>
                 </li>

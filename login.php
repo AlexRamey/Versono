@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	} else{
 		if (authenticate($_POST["email"], $_POST["pswd"]) === TRUE){
 			//$loginMessage = "Well done. :)";
-			header("Location: dashboard2.php");
+			header("Location: dashboard.php");
 		}
 		else{
 			$loginMessage = "Login failed: invalid username or password :(";

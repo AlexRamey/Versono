@@ -24,7 +24,7 @@ if ($sql->bind_param('sssss', $title, $artist, $email, $album, $price) === TRUE)
 	if ($sql->execute() === TRUE) { 
 			$sql->close();
 			$conn->close();
-			header("Location: dashboard2.php");
+			header("Location: dashboard.php");
 	}
 }
 

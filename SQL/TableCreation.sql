@@ -11,3 +11,17 @@ create table versono_user
     stripe_customer_id		varchar(50),
     primary key(email)
 );
+CREATE TABLE `boughtsongs` (
+ `email` varchar(50) NOT NULL,
+ `id` int(11) NOT NULL
+);
+CREATE TABLE `song` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `title` varchar(50) NOT NULL,
+ `artist` varchar(50) NOT NULL,
+ `email` varchar(50) NOT NULL,
+ `album` varchar(50) NOT NULL,
+ `price` decimal(3,2) NOT NULL,
+ `numsold` int(11) NOT NULL,
+ PRIMARY KEY (`id`)
+);

@@ -94,6 +94,7 @@ function authenticate($email, $pswd)
 								<li><a href="index.html">Home</a></li>
 								<li><a href="about.html">About Us</a></li>
 								<li><a href="signup.php">Sign Up</a></li>
+								<li class="current"><a href="login.php">Login</a></li>
 							</ul>
 						</nav>
 					<!-- Special Message Space -->

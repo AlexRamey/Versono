@@ -1910,11 +1910,11 @@
 			}
 
 			#footer-wrapper {
-				padding: 4em 0 4em 0;
+				padding: 0em 0 0em 0;
 			}
 
 				#footer-wrapper header {
-					margin: 0 0 3em 0;
+					margin: 0 0 0em 0;
 				}
 
 					#footer-wrapper header h2 {
@@ -2157,15 +2157,15 @@
 			}
 
 			#footer-wrapper {
-				padding: 3em 0 3em 0;
+				padding: 0em 0 0em 0;
 			}
 
 				#footer-wrapper:before {
-					height: 2.5em;
+					height: 0em;
 				}
 
 				#footer-wrapper header {
-					margin: 0 0 1.5em 0;
+					margin: 0 0 0em 0;
 				}
 
 					#footer-wrapper header h2 {
@@ -2246,7 +2246,7 @@
 			}
 
 			footer {
-				margin: 2em 0 0 0;
+				margin: 0em 0 0 0;
 			}
 
 		/* Box */
@@ -2491,7 +2491,7 @@
 			}
 
 			#footer-wrapper {
-				padding: 2em 25px;
+				padding: 0em 25px;
 				overflow: hidden;
 				-webkit-transform: translateZ(0);
 			}

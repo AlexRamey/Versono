@@ -265,14 +265,16 @@
 						<!-- <form id="signup-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> -->
 						<form id="signup-form" action="" method="post">
 							<div id="header">
-								<h3>Personal Information</h3>
+								<header class="major">
+									<h2>Personal Information</h2>
+								</header>
 							</div>
 							<div class="form_full_text_input">
 								Email:<br>
 								<input type="email" name="email" id="email_input" onblur="verifyEmail()" placeholder="user@domain.com" maxlength="50" value=<?php echo $email;?>>
 								<label class="notify_label" text="" id="email_feedback"><?php echo $emailErr;?></label>
 							</div>
-							<div class="clear">&nbsp;</div>
+							<div class="clear"></div>
 							<div class="form_half_text_input">
   								First name:<br>
   								<input type="text" name="first_name" id="fname_input" onblur="verifyName(0)" placeholder="First Name" maxlength="50" value=<?php echo $first_name;?>>
@@ -283,7 +285,7 @@
 								<input type="text" name="last_name" id="lname_input" onblur="verifyName(1)" placeholder="Last Name" maxlength="50" value=<?php echo $last_name;?>>
 								<label class="notify_label"><?php echo $lastNameErr;?></label>
 							</div>
-							<div class="clear">&nbsp;</div>
+							<div class="clear"></div>
 							<div class="form_half_text_input">
 								Password:<br>
 								<input type="password" name="pswd" onblur="verifyPassword(0)" onkeyup="verifyMatchingPasswords()" id="pswd_input_1" maxlength="50" value=<?php echo $pswd;?>>
@@ -298,7 +300,7 @@
 								<label class="green_label" text="" id="pswd_pos_feedback"></label>
 								<label class="notify_label" text="" id="con_pswd_empty_feedback"></label>
 							</div>
-							<div class="clear">&nbsp;</div>
+							<div class="clear"></div>
 							<div class="form_half_text_input">
 								Street Address:<br>
 								<input type="text" name="street_address" onblur="verifyAddress()" id="addr_input" maxlength="50" value=<?php echo $addr;?>>
@@ -312,7 +314,7 @@
 								<label class="notify_label"><?php echo $cityErr;?></label>
 								<label class="notify_label" text="" id="city_feedback"></label>
 							</div>
-							<div class="clear">&nbsp;</div>
+							<div class="clear"></div>
 							<div class="form_half_text_input">
 								State:<br>
 								<select name="state" size="3">
@@ -378,11 +380,12 @@
 							</div>
 							<div class="clear">&nbsp;</div>
 							<div id="header">
-								<h3>Banking Information</h3>
+								<header class="major">
+									<h2>Banking Information</h2>
+								</header>
 								<div class="form_full_text_input">
 									<label class="notify_label" id="payment_errors" text=""></label>
 								</div>
-								<br>
 							</div>
 							<div class="form_half_text_input">
 								Name on Card:<br>
@@ -394,7 +397,7 @@
 								<input type="text" id="card_number" data-stripe="number" onblur="verifyCardNumber()" placeholder="Credit/Debit Card Number" maxlength="16">
 								<label class="notify_label" text="" id="card_number_feedback"></label>
 							</div>
-							<div class="clear">&nbsp;</div>
+							<div class="clear"></div>
 							<div class="form_mini_text_input">
 								Expiration Month <br>
 								<select data-stripe="exp-month">

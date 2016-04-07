@@ -1168,7 +1168,7 @@
 		display: block;
 		color: #252122;
 		font-weight: 400;
-		margin: 0 0 0.5em 0;
+		margin: 0 0 0.0em 0;
 	}
 
 	form input[type=text],
@@ -1179,7 +1179,7 @@
 		-webkit-appearance: none;
 		display: block;
 		border: 0;
-		padding: 0.75em 1em;
+		padding: 0.50em 1em;
 		font-size: 1em;
 		border-radius: 5px;
 		border: solid 1px #dddddd;
@@ -1275,7 +1275,7 @@
 		position: relative;
 		text-align: center;
 		border-top: solid 1px #ccc;
-		top: 1em;
+		top: 0em;
 	}
 
 		header.major h2 {
@@ -1660,9 +1660,9 @@
 					border-top-color: #827a7c;
 				}
 
-/* Banner */
+/* Banner1 */
 
-	#banner {
+	.banner1 {
 		background: #CCE8F4 url("../../images/pic01.jpg");
 		background-position: center center;
 		background-size: auto 100%;
@@ -1670,7 +1670,7 @@
 		text-align: center;
 	}
 
-		#banner header {
+		.banner1 header {
 			/*background-color: #252122;*/
 			/*background-color: rgba(34, 30, 31, 0.98);*/
 			/*background-color: #FFAABB;*/
@@ -1678,12 +1678,43 @@
 			background-color: rgba(15, 20, 15, 0.5);
 		}
 
-			#banner header h2 {
+			.banner1 header h2 {
 				color: #fff;
 				font-weight: 700;
 			}
 
-			#banner header p {
+			.banner1 header p {
+				/*color: #33cc33;*/
+				color: #fff;
+				padding: 0;
+				font-style: normal;
+				margin: 0;
+			}
+
+/* Banner2 */
+
+	.banner2 {
+		background: #CCE8F4 url("../../images/pic02.jpg");
+		background-position: center center;
+		background-size: auto 100%;
+		background-repeat: no-repeat;
+		text-align: center;
+	}
+
+		.banner2 header {
+			/*background-color: #252122;*/
+			/*background-color: rgba(34, 30, 31, 0.98);*/
+			/*background-color: #FFAABB;*/
+			/*opacity: 0.5;*/
+			background-color: rgba(15, 20, 15, 0.5);
+		}
+
+			.banner2 header h2 {
+				color: #fff;
+				font-weight: 700;
+			}
+
+			.banner2 header p {
 				/*color: #33cc33;*/
 				color: #fff;
 				padding: 0;
@@ -1813,7 +1844,7 @@
 				}
 
 				header.major {
-					margin: 0 0 3em 0;
+					margin: 0 0 .25em 0;
 				}
 
 			footer {
@@ -1902,11 +1933,11 @@
 		/* Wrappers */
 
 			#header-wrapper {
-				padding: 4.5em 0 4em 0;
+				padding: 2em 0 1em 0;
 			}
 
 			#main-wrapper {
-				padding: 4em 0 4em 0;
+				padding: 2em 0 1em 0;
 			}
 
 			#footer-wrapper {
@@ -2024,26 +2055,49 @@
 						border-bottom-color: rgba(34, 30, 31, 0.98);
 					}
 
-		/* Banner */
+		/* Banner1 */
 
-			#banner {
+			.banner1 {
 				position: relative;
 				padding: 8em 0;
 				margin: 4em 0 0 0;
 			}
 
-				#banner header {
+				.banner1 header {
 					display: inline-block;
 					padding: 2.5em 5em;
 					border-radius: 5px;
 				}
 
-					#banner header h2 {
+					.banner1 header h2 {
 						font-size: 2.5em;
 						margin: 0 0 0.65em 0;
 					}
 
-					#banner header p {
+					.banner1 header p {
+						font-size: 1.5em;
+					}
+
+		/* Banner2 */
+
+			.banner2 {
+				position: relative;
+				padding: 8em 0;
+				margin: 4em 0 0 0;
+			}
+
+				.banner2 header {
+					display: inline-block;
+					padding: 2.5em 5em;
+					border-radius: 5px;
+				}
+
+					.banner2 header h2 {
+						font-size: 2.5em;
+						margin: 0 0 0.65em 0;
+					}
+
+					.banner2 header p {
 						font-size: 1.5em;
 					}
 
@@ -2133,7 +2187,7 @@
 		/* Section/Article */
 
 			header.major {
-				margin: 0.75em 0 2.5em 0;
+				margin: 0.0em 0 0.0em 0;
 			}
 
 				header.major h2 {
@@ -2178,9 +2232,16 @@
 				margin: 0.25em 0 1em 0;
 			}
 
-		/* Banner */
+		/* Banner1 */
 
-			#banner {
+			.banner1 {
+				padding: 6em 0;
+				margin: 3em 0 0 0;
+			}
+
+		/* Banner2 */
+
+			.banner2 {
 				padding: 6em 0;
 				margin: 3em 0 0 0;
 			}
@@ -2537,24 +2598,45 @@
 				display: none;
 			}
 
-		/* Banner */
+		/* Banner1 */
 
-			#banner {
+			.banner1 {
 				margin: 2em 0 4em 0 !important;
 				padding: 6em 0;
 			}
 
-				#banner header {
+				.banner1 header {
 					padding: 1.5em 1em 1.5em 1em;
 				}
 
-					#banner header h2 {
+					.banner1 header h2 {
 						font-size: 1.5em;
 						line-height: 1.5em;
 						margin: 0 0 0.25em 0;
 					}
 
-					#banner header p {
+					.banner1 header p {
+						font-size: 1.2em;
+					}
+
+		/* Banner2 */
+
+			.banner2 {
+				margin: 2em 0 4em 0 !important;
+				padding: 6em 0;
+			}
+
+				.banner2 header {
+					padding: 1.5em 1em 1.5em 1em;
+				}
+
+					.banner2 header h2 {
+						font-size: 1.5em;
+						line-height: 1.5em;
+						margin: 0 0 0.25em 0;
+					}
+
+					.banner2 header p {
 						font-size: 1.2em;
 					}
 

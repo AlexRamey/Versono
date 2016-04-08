@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$loginMessage = "Login failed: invalid username or password :(";
 		}
 	}
-}else if ($_SERVER["REQUEST_METHOD"] == "POST"){
+}else if ($_SERVER["REQUEST_METHOD"] == "GET"){
 	if(isset($_SESSION["user"])){
 		header("Location: member_home.php");
 	}

@@ -18,11 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	} else{
 		if (authenticate($_POST["email"], $_POST["pswd"]) === TRUE){
 			//$loginMessage = "Well done. :)";
-			header("Location: dashboard.php");
+			header("Location: member_home.php");
 		}
 		else{
 			$loginMessage = "Login failed: invalid username or password :(";
 		}
+	}
+}else if ($_SERVER["REQUEST_METHOD"] == "POST"){
+	if(isset($_SESSION["user"])){
+		header("Location: member_home.php");
 	}
 }
 
@@ -86,13 +90,13 @@ function authenticate($email, $pswd)
 				<div id="header">
 
 					<!-- Logo -->
-						<h1>Versono</h1>
+						<h1><a href="index.php">Versono</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html">About Us</a></li>
+								<li><a href="index.php">Home</a></li>
+								<li><a href="about.php">About Us</a></li>
 								<li><a href="signup.php">Sign Up</a></li>
 								<li class="current"><a href="login.php">Login</a></li>
 							</ul>

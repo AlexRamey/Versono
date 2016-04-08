@@ -241,15 +241,23 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1>Sign Up</h1>
+						<h1><a href="index.php">Versono</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html">About Us</a></li>
+								<li><a href="index.php">Home</a></li>
+								<li><a href="about.php">About Us</a></li>
 								<li class="current"><a href="signup.php">Sign Up</a></li>
-								<li><a href="login.php">Login</a></li>
+								<?php
+								        session_start();
+
+								        if(isset($_SESSION["user"])):
+								        	echo '<li><a href="member_home.php">Dashboard</a></li>';
+								        else:
+								            echo '<li><a href="login.php">Login</a></li>';
+								        endif;
+								?>
 							</ul>
 						</nav>
 					<!-- Special Message Space -->

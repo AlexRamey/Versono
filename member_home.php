@@ -39,26 +39,57 @@
 			</div>
 			<!-- Main -->
 			<div id="main-wrapper">
+
 				<div class="container">
+                    <div id="header">
+                                <header class="major">
+                                    <h2>Welcome back to Versono myStudio, <?php echo $name; ?>!</h2>
+                                </header>
+                            </div>
+                    <br/>
+                    <form action="login.php" method="post" id="logoutform">
+
+                    <div class="submit_btn_holder">
+                        <a href="#" class="button alt">Manage Profile</a>
+                        <a href="#" class="button alt">Account Details</a>
+                        <a href="#" class="button alt">Top Sellers</a>
+                        <a href="#" class="button alt">Visit myShop</a>
+                        <a href="#" class="button alt">
+                            <i class="icon alt fa-comment-o "></i>
+                        </a>
+
+                        <a href="#" class="button alt">
+                            <i class="icon alt fa-question "></i>
+                        </a>
+                        <a href="#" class="button alt">
+                                <i class="icon alt fa-search "></i>
+                        </a>
+
+                                
+                        <!--<input type="submit" class="button alt" id="submit_btn" value="Logout">-->
+
+                    </div>
+                </form>
+                    <br/>
+                    <br/>
                     <div class="row">
                         <div class="4u 12u(mobile)">
                             <!-- Sidebar -->
                                 <section class="box">
-                                    <a href="#" class="image featured"><img src="images/koch_bike.jpg" alt="" /></a>
+                                    <a href="#" class="image featured"><img src="images/koch_bike_special.jpg" alt="" /></a>
                                     <header>
-                                        <h3>John Doe</h3>
+                                        <h3>Bernie Franks</h3>
                                     </header>
-                                    <p>John Doe has been a part of the Versono community for over 10 months. Top hits include "Twist and Shout" and "Mississippi Kid", which each eclipsed the Versono Platinum level of one million downloads!</p>
+                                    <p>Franks has been a part of the Versono community for over 10 months. Top hits include "One Time Walkin'" and "Tricontinentenal", which both eclipsed the Versono Platinum level of one million downloads!</p>
                                     <footer>
-                                        <a href="#" class="button alt">Edit Profile</a>
+                                        <a href="#" class="button alt">Edit Bio</a>
                                     </footer>
                                 </section>
                         </div>
                         <div class="8u 12u(mobile) important(mobile)">
-                            <article class="box post">
                                 <section>
                                     <table style="width:100%">
-                                        <caption>This Month's Best Sellers</caption>
+                                        <caption id="member">This Month's Best Sellers</caption>
                                         <thead>
                                             <tr>
                                                 <th>Track</th>
@@ -70,20 +101,29 @@
                                         </thead>
                                         <tbody>
                                         	<tr>
-                                        		<td>Springsteen</td>
+                                        		<td>They Been Sleepin' on Me</td>
                                         		<td>$0.99</td> 
                                         		<td>92</td>
-                                                <td>893</td>
-                                                <td>June 2011</td>
+                                                <td>890</td>
+                                                <td>June 2016</td>
                                         	</tr>
                                         	<tr>
-                                        		<td>Sweet Home Alabama</td>
-                                                <td>$0.99</td> 
+                                        		<td>Sweet Mrs Lou Comin' Home</td>
+                                                <td>$0.79</td> 
                                                 <td>73</td>
-                                                <td>188290</td>
-                                                <td>April 1974</td>
+                                                <td>5600</td>
+                                                <td>April 2015</td>
                                         	</tr>
+
                                         </tbody>
+                                    </table>
+                                </section>
+                                <section>
+                                    <table style="width:100%" id="data">
+                                        <caption id="member">Followership Analytics</caption>
+                                        <tr>
+                                            <td><img id="data" src="images/graph.jpg" style="width:95%"/></td>
+                                        </tr>
                                     </table>
                                 </section>
                                 <!-- A logout button-->

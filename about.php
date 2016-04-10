@@ -54,10 +54,12 @@
 					<div class="container">
 						<!-- Content -->
 							<article class="box post">
-								<header>
-									<h2>A New Approach to a Timeless Medium</h2>
-									<p><i>The philosophy of Versono</i></p>
-								</header>
+								<center>
+									<header>
+										<h2>A New Approach to a Timeless Medium</h2>
+										<p><i>The philosophy of Versono</i></p>
+									</header>
+								</center>
 								<p>
 									Since the dawn of mankind music has been intertwined with our development,
 									expressing our courage, our passion, our hopes, and our fears. Music is a platform from which we tell stories, communicate news, and advance ideas. Despite such obvious significance, the question remains: 
@@ -65,7 +67,7 @@
 								</p>
 								<section>
 									<header>
-										<h3>Upending the status quo</h3>
+										<center><h3>Upending the status quo</h3></center>
 									</header>
 									<p>
 									Versono refers to the <b>"truth of sound"</b>. This phrase comes naturally out of our core beliefs. The current situation is dominated by two music-sharing giants, SoundCloud and iTunes. It is best described as a <i>spectrum</i>, one which SoundCloud occupies at one end&mdash;requiring artists to post music for free&mdash;and iTunes at the other&mdash;requiring the opposite. Paid music services similar to iTunes (e.g. Google Play) are indicative of the same problem, but to a smaller scale. Versono fills the <b>void</b> left in the middle of the spectrum.
@@ -73,15 +75,18 @@
 								</section>
 								<section>
 									<header>
-										<h3>Focus on the Songwriter</h3>
+										<center><h3>Focus on the Songwriter</h3></center>
 									</header>
 									<p>
 									Versono provides an easy-to-access marketplace for up-and-coming musicians to sell their music. Registration is quick, and hassle-free, without any of the hurdles the bigger marketplaces such as iTunes impose. However, the simplicity we emphasize does not mean we sacrifice quality: our marketplace has an extensive set of features that allow for customers to follow an artist, rate songs, and voice opinions in addition to buying music. Versono allows for musicians to post songs for free (a la Soundcloud) in addition to posting paid music, and create promotional offers for upcoming albums and events. With an artist-side philosophy, we make it easy to set up and customize musician profile, attract fans, and share ideas with other musicians. What makes us unique is our emphasis on the artist, all the while maintaining a good customer experience. 
 									<br/>
-									<b>Sign up and start selling your work in under 5 minutes today!</b>
+									<br/>
+									<center>
+									<h3><b>Sign up and start selling your work in under 5 minutes today!</b></h3>
 									</p>
 
 									<a href="signup.php" class="button big">Sign Up</a>
+									</center>
 
 						
 								</section>

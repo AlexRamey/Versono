@@ -5,22 +5,22 @@
 .form_mini_text_input{
    width:25%;
    float:left;
-   padding-left: 20px;
-   padding-right: 20px;
+   padding-left: 60px;
+   padding-right: 60px;
 }
 
 .form_half_text_input{
    width:50%;
    float:left;
-   padding-left: 20px;
-   padding-right: 20px;
+   padding-left: 60px;
+   padding-right: 60px;
 }
 
 .form_full_text_input{
 	width:100%;
 	float:left;
-   	padding-left: 20px;
-   	padding-right: 20px;
+   	padding-left: 60px;
+   	padding-right: 60px;
 }
 
 .submit_btn_holder{ 
@@ -39,4 +39,9 @@
 	max-width: 500px;
 	width:90%;
 	margin: auto;
+}
+
+.bullets{
+   margin: auto;
+   padding: 60px;
 }

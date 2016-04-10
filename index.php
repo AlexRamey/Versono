@@ -11,6 +11,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/true_style.css" />
+
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="homepage">
@@ -146,23 +148,26 @@
 									<section>
 										<header class="major">
 											<h2>This Week's Featured Artists</h2>
+											<br/>
+											<br/>
+
 										</header>
 										<div class="row">
 											<div class="4u 12u(mobile)">
 												<section class="box">
-													<a href="#" class="image featured"><img src="images/swift.jpg" alt="" /></a>
+													<a href="#" class="image featured"><img src="images/goldlink_circle.jpg" alt="" /></a>
 													<header>
-														<h3>Taylor Swift</h3>
+														<h3>GoldLink</h3>
 													</header>
-													<p>Swift just released her new album 1989 and is really excited to share it with the Versono community. Her 1989 tour is starting next month!</p>
+													<p>With eclectic beats and impeccable flow, this "future bounce" emcee has plans to share his next work with the Versono community.</p>
 													<footer>
-														<a href="#" class="button alt">Visit Taylor's Page</a>
+														<a href="#" class="button alt">Visit GoldLink's Page</a>
 													</footer>
 												</section>
 											</div>
 											<div class="4u 12u(mobile)">
 												<section class="box">
-													<a href="#" class="image featured"><img src="images/church.jpg" alt="" /></a>
+													<a href="#" class="image featured"><img src="images/church_circle.jpg" alt="" /></a>
 													<header>
 														<h3>Eric Church</h3>
 													</header>
@@ -174,11 +179,11 @@
 											</div>
 											<div class="4u 12u(mobile)">
 												<section class="box">
-													<a href="#" class="image featured"><img src="images/buffet.jpg" alt="" /></a>
+													<a href="#" class="image featured"><img src="images/buffet_circle.jpg" alt="" /></a>
 													<header>
 														<h3>Jimmy Buffet</h3>
 													</header>
-													<p>The legend returns from Margaritaville with a few more beach songs for this summer season! Check out Jimmy's new album, Off to See the Lizard!</p>
+													<p>The legend returns from Margaritaville with a few more beach songs for the summer! Check out his new album, Off to See the Lizard!</p>
 													<footer>
 														<a href="#" class="button alt">Visit Jimmy's Page</a>
 													</footer>

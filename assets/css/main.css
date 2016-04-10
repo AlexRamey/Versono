@@ -20,6 +20,55 @@
 		vertical-align: baseline;
 	}
 
+	table th,  tr td {
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	table tr:nth-child(1) td {
+    border-bottom: 1px solid black;
+    }
+
+    table th, tr:last-child td {
+    border-bottom: 3px solid #000;
+	}
+
+	table th:not(:last-child), tr:nth-of-type(1n) td:not(:last-child) {
+    border-right: 3px solid #000;
+	}
+
+	table th:last-child, tr:nth-of-type(1n) td:last-child {
+    border-right: 3px solid #FFF;
+	}
+
+
+	table th, tr:nth-of-type(n) td {
+    border-top: 3px solid #FFF;
+    border-left: 3px solid #FFF;
+	}
+
+	table tr:not(:first-child) td {
+		border-top: 1px solid #000;
+	}
+
+	table#data tr:last-child td {
+		border-bottom: 3px solid #FFF;
+	}
+
+	img#data {
+		border: 3px solid #000;
+		padding: 5px;
+	}
+
+	caption#member {
+    margin-bottom: 15px;
+    text-transform: lowercase;
+    font-size: 160%;
+    padding: 5px;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
@@ -1286,12 +1335,12 @@ td {
 	header.major {
 		position: relative;
 		text-align: center;
-		border-top: solid 1px #ccc;
+		border-top: solid 2px #ccc;
 		top: 0em;
 	}
 
 		header.major h2 {
-			background: #fff;
+			/* background: #fff; */
 			position: relative;
 			top: -0.65em;
 			display: inline;
@@ -1303,7 +1352,7 @@ td {
 
 	.box {
 		background: #ffffff;
-		border-bottom: solid 1px #ccc;
+		/*border-bottom: solid 1px #ccc;*/
 	}
 
 		.box .image.featured {
@@ -1739,7 +1788,7 @@ td {
 	#header-wrapper {
 		position: relative;
 		background: #ffffff;
-		border-bottom: solid 1px #ccc;
+		/*border-bottom: solid 1px #ccc;*/
 	}
 
 	#main-wrapper {
@@ -1761,7 +1810,9 @@ td {
 		}
 
 		#main-wrapper .major h2 {
-			background: #f7f7f7 url("images/bg02.png");
+			/*background: #f7f7f7 url("images/bg02.png");*/
+			background: #fff url("images/bg02.png");
+
 		}
 
 	#footer-wrapper {
@@ -1809,6 +1860,8 @@ td {
 		font-size: 1.2em;
 		font-style: bold;
 		text-align: left;
+		margin: auto;
+		padding: 0px 100px 40px;
 	}
 
 /* Copyright */
